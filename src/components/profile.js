@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-
+const url = process.env.REACT_APP_DB_URL;
 
 
 class Profile extends Component{
@@ -57,7 +57,7 @@ authenticate= () =>{
     render(){
         return(
             <div>
-                here
+                <MsgList msg= {this.state.msgs}/>
             </div>
         )
     }
