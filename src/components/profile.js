@@ -15,7 +15,7 @@ class Profile extends Component{
 
 
 authenticate= () =>{
-    const token = localStorage.getItem('bit_token');
+    const token = localStorage.getItem('token');
     const options = {
         headers: {
             authorization: token,
@@ -47,7 +47,7 @@ authenticate= () =>{
         const { pathname } = this.props.location;
         console.log(this.props);
         console.log(prevProps);
-        if (pathname === '/jokes' && pathname !== prevProps.location.pathname) {
+        if (pathname === '/profile' && pathname !== prevProps.location.pathname) {
             this.authenticate();
         }
     };

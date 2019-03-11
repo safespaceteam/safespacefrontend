@@ -28,7 +28,7 @@ class Login extends Component {
       .post(`${url}/login`, this.state.user)
       .then(res => {
         if (res.status === 201 && res.data) {
-          localStorage.setItem("secret_bit_token", res.data);
+          localStorage.setItem("token", res.data);
           this.props.history.push("/jokes");
         } else {
           throw new Error();
