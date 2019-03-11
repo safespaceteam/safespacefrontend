@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
 const url = process.env;
@@ -10,9 +10,11 @@ const initalUser = {
 
 class SignIn extends Component {
   constructor(props) {
+    super(props);
     this.state = {
       user: { ...initalUser },
-      message: ""
+      message: "",
+      register: false
     };
   }
 
