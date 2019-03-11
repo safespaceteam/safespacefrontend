@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 const url = process.env.REACT_APP_DB_URL;
 
 const initalUser = {
   name: "",
+  username: "",
   password: ""
 };
 
-class SignIn extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +30,9 @@ class SignIn extends Component {
     axios
       .post(`${url}/register`, this.state.user)
       .then(res => {
+        console.log(res);
         if (res.status === 201 && res.data) {
-          localStorage.setItem("token", res.data);
+          // localStorage.setItem("token", res.data);
           this.props.history.push("/");
         } else {
           throw new Error();
@@ -50,6 +52,14 @@ class SignIn extends Component {
         <h1>here</h1>
         <h2>Sign In</h2>
         <form onSubmit={this.submitHandler}>
+          <label htmlFor="name">name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={this.state.user.name}
+            onChange={this.inputHandler}
+          />
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -68,19 +78,11 @@ class SignIn extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        <h2>Not Registered?</h2>
-        <Button
-          component={Link}
-          to="/register"
-          variant="contained"
-          color="primary"
-        >
-          Register
-        </Button>
+        <h2>Already a Member?</h2>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );
   }
 }
 
-export default SignIn;
+export default Register;

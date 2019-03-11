@@ -1,21 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 
 const url = process.env.REACT_APP_DB_URL;
 
-const initalUser = {
-  name: "",
+const initialUser = {
   username: "",
   password: ""
 };
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { ...initalUser },
+      user: { ...initialUser },
       message: ""
     };
   }
@@ -28,19 +25,19 @@ class Register extends Component {
   submitHandler = event => {
     event.preventDefault();
     axios
-      .post(`${url}/register`, this.state.user)
+      .post(`${url}/login`, this.state.user)
       .then(res => {
         if (res.status === 201 && res.data) {
-          localStorage.setItem("token", res.data);
-          this.props.history.push("/");
+          localStorage.setItem("secret_bit_token", res.data);
+          this.props.history.push("/jokes");
         } else {
           throw new Error();
         }
       })
       .catch(err => {
         this.setState({
-          message: "sign-in failed",
-          user: { ...initalUser }
+          message: "Sign In failed",
+          user: { ...initialUser }
         });
       });
   };
@@ -48,17 +45,8 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <h1>here</h1>
         <h2>Sign In</h2>
-        <form onSubmit={this.submitHandlerRegister}>
-          <label htmlFor="name">name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={this.state.user.name}
-            onChange={this.inputHandler}
-          />
+        <form onSubmit={this.submitHandler}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -77,19 +65,10 @@ class Register extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        <h2>Already a Member?</h2>
-        <Button
-          component={Link}
-          to="/login"
-          variant="contained"
-          color="primary"
-        >
-          login
-        </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );
   }
 }
 
-export default Register;
+export default Login;
