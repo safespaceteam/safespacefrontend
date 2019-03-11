@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import SignIn from "./signin";
 import Register from "./signup";
+import Profile from "./profile";
 
 const Routes = props => {
   return (
@@ -16,6 +17,7 @@ const Routes = props => {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={SignIn} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </section>
     </div>
