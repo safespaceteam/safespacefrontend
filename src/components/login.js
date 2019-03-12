@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -69,7 +71,7 @@ class Login extends Component {
         </form> */}
         <form>
           <Avatar>
-            <i class="material-icons">person_outline</i>
+            <i className="material-icons">person_outline</i>
           </Avatar>
           <h2>Sign In</h2>
           <TextField
@@ -91,6 +93,10 @@ class Login extends Component {
             onChange={this.inputHandler}
           />
         </form>
+        <p>Not a Member?</p>
+        <Button component={Link} to="/register">
+          Register
+        </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );

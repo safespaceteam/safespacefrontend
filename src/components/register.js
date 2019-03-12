@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
@@ -83,9 +83,9 @@ class Register extends Component {
 
         <form>
           <Avatar>
-            <i class="material-icons">person_outline</i>
+            <i className="material-icons">person_outline</i>
           </Avatar>
-          <h2>Sign In</h2>
+          <h2>Sign up</h2>
           <TextField
             // id="standard-name"
             type="text"
@@ -114,7 +114,10 @@ class Register extends Component {
             onChange={this.inputHandler}
           />
         </form>
-        <h2>Already a Member?</h2>
+        <p>Already a Member?</p>
+        <Button component={Link} to="/login">
+          sign in
+        </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );
