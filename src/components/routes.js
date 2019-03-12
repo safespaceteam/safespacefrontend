@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Login from "./login";
 import Register from "./register";
-// import Profile from "./profile";
+import Profile from "./profile";
 
 const Routes = props => {
   return (
@@ -17,7 +17,7 @@ const Routes = props => {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          {/* <Route path="/profile" component={Profile} /> */}
+          <Route path="/profile" component={Profile} />
         </Switch>
       </section>
     </div>

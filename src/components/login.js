@@ -28,12 +28,14 @@ class Login extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+
     axios
-      .post(`${url}/login`, this.state.user)
+      .post(`https://my-safe-space.herokuapp.com/login`, this.state.user)
       .then(res => {
-        if (res.status === 201 && res.data) {
-          localStorage.setItem("token", res.data);
-          this.props.history.push("/jokes");
+        if (res.status === 200 && res.data) {
+          console.log(res.data);
+          localStorage.setItem("token", res.data.token);
+          this.props.history.push("/profile");
         } else {
           throw new Error();
         }
@@ -49,26 +51,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {/* <h2>Sign In</h2> */}
-        {/* <form onSubmit={this.submitHandler}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.user.username}
-            onChange={this.inputHandler}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.user.password}
-            onChange={this.inputHandler}
-          />
-          <button type="submit">Submit</button>
-        </form> */}
         <form onSubmit={this.submitHandler}>
           <Avatar>
             <i className="material-icons">person_outline</i>
