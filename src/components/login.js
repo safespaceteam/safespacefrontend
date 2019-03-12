@@ -69,12 +69,13 @@ class Login extends Component {
           />
           <button type="submit">Submit</button>
         </form> */}
-        <form>
+        <form onSubmit={this.submitHandler}>
           <Avatar>
             <i className="material-icons">person_outline</i>
           </Avatar>
           <h2>Sign In</h2>
           <TextField
+            required
             // id="standard-name"
             type="text"
             label="username"
@@ -84,6 +85,7 @@ class Login extends Component {
             onChange={this.inputHandler}
           />
           <TextField
+            required
             // id="standard-name"
             type="password"
             label="password"
@@ -92,6 +94,7 @@ class Login extends Component {
             value={this.state.user.password}
             onChange={this.inputHandler}
           />
+          <Button type="submit">Sign In</Button>
         </form>
         <p>Not a Member?</p>
         <Button component={Link} to="/register">

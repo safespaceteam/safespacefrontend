@@ -81,12 +81,13 @@ class Register extends Component {
           <button type="submit">Submit</button>
         </form> */}
 
-        <form>
+        <form onSubmit={this.submitHandler}>
           <Avatar>
             <i className="material-icons">person_outline</i>
           </Avatar>
           <h2>Sign up</h2>
           <TextField
+            required
             // id="standard-name"
             type="text"
             label="name"
@@ -96,6 +97,7 @@ class Register extends Component {
             onChange={this.inputHandler}
           />
           <TextField
+            required
             // id="standard-name"
             type="text"
             label="username"
@@ -105,6 +107,7 @@ class Register extends Component {
             onChange={this.inputHandler}
           />
           <TextField
+            required
             // id="standard-name"
             type="password"
             label="password"
@@ -113,6 +116,7 @@ class Register extends Component {
             value={this.state.user.password}
             onChange={this.inputHandler}
           />
+          <Button type="submit">Sign Up</Button>
         </form>
         <p>Already a Member?</p>
         <Button component={Link} to="/login">
