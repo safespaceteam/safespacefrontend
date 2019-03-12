@@ -54,7 +54,6 @@ class Messages extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         {this.state.edit ? (

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MsgList from "./msgList";
+import AddMessage from "./addMsg";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -9,9 +10,14 @@ class Profile extends Component {
     super(props);
     this.state = {
       msgs: [],
-      loggedIn: false
+      loggedIn: false,
+      addNote: false
     };
   }
+
+  newNoteForm = () => {
+    this.setState({ addNote: !this.state.addNote });
+  };
 
   authenticate = () => {
     const token = localStorage.getItem("token");
@@ -59,8 +65,21 @@ class Profile extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
+        {this.state.addNote ? (
+          <AddMessage
+            msgs={this.state.msgs}
+            newNoteForm={this.newNoteForm}
+            msgHandler={this.msgHandler}
+          />
+        ) : (
+          <i className="material-icons" onClick={this.newNoteForm}>
+            note_add
+          </i>
+        )}
+
         <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
       </div>
     );
