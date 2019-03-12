@@ -51,36 +51,6 @@ class Register extends Component {
   render() {
     return (
       <div>
-        {/* <h1>here</h1>
-        <h2>Sign In</h2>
-        <form onSubmit={this.submitHandler}>
-          <label htmlFor="name">name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={this.state.user.name}
-            onChange={this.inputHandler}
-          />
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.user.username}
-            onChange={this.inputHandler}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.user.password}
-            onChange={this.inputHandler}
-          />
-          <button type="submit">Submit</button>
-        </form> */}
-
         <form onSubmit={this.submitHandler}>
           <Avatar>
             <i className="material-icons">person_outline</i>
