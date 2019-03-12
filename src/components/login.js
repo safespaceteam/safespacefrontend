@@ -30,7 +30,7 @@ class Login extends Component {
     event.preventDefault();
 
     axios
-      .post(`https://my-safe-space.herokuapp.com/login`, this.state.user)
+      .post(`${url}/login`, this.state.user)
       .then(res => {
         if (res.status === 200 && res.data) {
           console.log(res.data);

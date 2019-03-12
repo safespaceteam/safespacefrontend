@@ -4,7 +4,9 @@ const SingleMsg = props => {
   return (
     <div>
       {props.msg.message}
-      <i class="material-icons">edit</i>
+      <i className="material-icons">edit</i>
+      <i className="material-icons">close</i>
+      <i className="material-icons">delete_outline</i>
     </div>
   );
 };
