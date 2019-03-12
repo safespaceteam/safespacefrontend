@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import EditMessage from "./editMessage";
 
-class SingleMsg extends Component {
+class Messages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,4 +23,4 @@ class SingleMsg extends Component {
   }
 }
 
-export default SingleMsg;
+export default Messages;

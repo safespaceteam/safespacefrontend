@@ -1,11 +1,11 @@
 import React from "react";
-import SingleMsg from "./singleMsg";
+import Messages from "./messages";
 
 const MsgList = props => {
   return (
     <div>
       {props.msgs.map(msg => (
-        <SingleMsg key={msg.id} msg={msg} id={msg.id} />
+        <Messages key={msg.id} msg={msg} id={msg.id} />
       ))}
     </div>
   );
