@@ -10,10 +10,17 @@ const EditMessage = props => {
         type="text"
         multiline
         rows="4"
-        value={props.msg.message}
+        value={props.editMsg}
         // className={classes.textField}
+        onChange={props.editMsgHandler}
         margin="normal"
       />
+      <i className="material-icons" onClick={props.saveEdits}>
+        check
+      </i>
+      <i className="material-icons" onClick={props.openEditForm}>
+        close
+      </i>
     </form>
   );
 };

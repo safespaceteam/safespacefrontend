@@ -53,10 +53,14 @@ class Profile extends Component {
     }
   }
 
+  msgHandler = data => {
+    this.setState({ msgs: data });
+  };
+
   render() {
     return (
       <div>
-        <MsgList msgs={this.state.msgs} />
+        <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
       </div>
     );
   }

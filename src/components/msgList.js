@@ -5,7 +5,12 @@ const MsgList = props => {
   return (
     <div>
       {props.msgs.map(msg => (
-        <Messages key={msg.id} msg={msg} id={msg.id} />
+        <Messages
+          key={msg.id}
+          msg={msg}
+          id={msg.id}
+          msgHandler={props.msgHandler}
+        />
       ))}
     </div>
   );
