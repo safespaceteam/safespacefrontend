@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -46,8 +47,8 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h2>Sign In</h2>
-        <form onSubmit={this.submitHandler}>
+        {/* <h2>Sign In</h2> */}
+        {/* <form onSubmit={this.submitHandler}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -65,8 +66,12 @@ class Login extends Component {
             onChange={this.inputHandler}
           />
           <button type="submit">Submit</button>
-        </form>
+        </form> */}
         <form>
+          <Avatar>
+            <i class="material-icons">person_outline</i>
+          </Avatar>
+          <h2>Sign In</h2>
           <TextField
             // id="standard-name"
             type="text"
