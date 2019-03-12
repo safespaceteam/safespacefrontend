@@ -1,15 +1,16 @@
 import React from React;
+import SingleMsg from './singleMsg';
 
 
 
 const MsgList = props =>{
 
-    <div>
+    return (<div>
         {props.msgs.map(msg => (
-            <Msg msg ={msg} id = {msg.id} />
+            <SingleMsg msg ={msg} id = {msg.id} />
         ))}
     </div>
-
+)
 
 }
 

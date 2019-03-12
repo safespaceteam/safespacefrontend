@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import MsgList from './msgList';
 
 const url = process.env.REACT_APP_DB_URL;
 
