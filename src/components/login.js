@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -64,6 +65,26 @@ class Login extends Component {
             onChange={this.inputHandler}
           />
           <button type="submit">Submit</button>
+        </form>
+        <form>
+          <TextField
+            // id="standard-name"
+            type="text"
+            label="username"
+            name="username"
+            // className={classes.textfield}
+            value={this.state.user.username}
+            onChange={this.inputHandler}
+          />
+          <TextField
+            // id="standard-name"
+            type="password"
+            label="password"
+            name="password"
+            // className={classes.textfield}
+            value={this.state.user.password}
+            onChange={this.inputHandler}
+          />
         </form>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>

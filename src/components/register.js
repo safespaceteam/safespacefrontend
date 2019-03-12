@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 // import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -77,6 +78,36 @@ class Register extends Component {
             onChange={this.inputHandler}
           />
           <button type="submit">Submit</button>
+        </form>
+
+        <form>
+          <TextField
+            // id="standard-name"
+            type="text"
+            label="name"
+            name="name"
+            // className={classes.textfield}
+            value={this.state.user.name}
+            onChange={this.inputHandler}
+          />
+          <TextField
+            // id="standard-name"
+            type="text"
+            label="username"
+            name="username"
+            // className={classes.textfield}
+            value={this.state.user.username}
+            onChange={this.inputHandler}
+          />
+          <TextField
+            // id="standard-name"
+            type="password"
+            label="password"
+            name="password"
+            // className={classes.textfield}
+            value={this.state.user.password}
+            onChange={this.inputHandler}
+          />
         </form>
         <h2>Already a Member?</h2>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
