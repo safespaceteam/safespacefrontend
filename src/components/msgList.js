@@ -1,17 +1,19 @@
-import React from React;
-import SingleMsg from './singleMsg';
+import React from "react";
+import Messages from "./messages";
 
-
-
-const MsgList = props =>{
-
-    return (<div>
-        {props.msgs.map(msg => (
-            <SingleMsg msg ={msg} id = {msg.id} />
-        ))}
+const MsgList = props => {
+  return (
+    <div>
+      {props.msgs.map(msg => (
+        <Messages
+          key={msg.id}
+          msg={msg}
+          id={msg.id}
+          msgHandler={props.msgHandler}
+        />
+      ))}
     </div>
-)
-
-}
+  );
+};
 
 export default MsgList;

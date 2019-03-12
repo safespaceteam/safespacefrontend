@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -24,12 +28,14 @@ class Login extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+
     axios
       .post(`${url}/login`, this.state.user)
       .then(res => {
-        if (res.status === 201 && res.data) {
-          localStorage.setItem("token", res.data);
-          this.props.history.push("/jokes");
+        if (res.status === 200 && res.data) {
+          console.log(res.data);
+          localStorage.setItem("token", res.data.token);
+          this.props.history.push("/profile");
         } else {
           throw new Error();
         }
@@ -45,26 +51,37 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h2>Sign In</h2>
         <form onSubmit={this.submitHandler}>
-          <label htmlFor="username">Username</label>
-          <input
+          <Avatar>
+            <i className="material-icons">person_outline</i>
+          </Avatar>
+          <h2>Sign In</h2>
+          <TextField
+            required
+            // id="standard-name"
             type="text"
-            id="username"
+            label="username"
             name="username"
+            // className={classes.textfield}
             value={this.state.user.username}
             onChange={this.inputHandler}
           />
-          <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            required
+            // id="standard-name"
             type="password"
-            id="password"
+            label="password"
             name="password"
+            // className={classes.textfield}
             value={this.state.user.password}
             onChange={this.inputHandler}
           />
-          <button type="submit">Submit</button>
+          <Button type="submit">Sign In</Button>
         </form>
+        <p>Not a Member?</p>
+        <Button component={Link} to="/register">
+          Register
+        </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );

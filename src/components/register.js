@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -49,36 +51,47 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <h1>here</h1>
-        <h2>Sign In</h2>
         <form onSubmit={this.submitHandler}>
-          <label htmlFor="name">name</label>
-          <input
+          <Avatar>
+            <i className="material-icons">person_outline</i>
+          </Avatar>
+          <h2>Sign up</h2>
+          <TextField
+            required
+            // id="standard-name"
             type="text"
-            id="name"
+            label="name"
             name="name"
+            // className={classes.textfield}
             value={this.state.user.name}
             onChange={this.inputHandler}
           />
-          <label htmlFor="username">Username</label>
-          <input
+          <TextField
+            required
+            // id="standard-name"
             type="text"
-            id="username"
+            label="username"
             name="username"
+            // className={classes.textfield}
             value={this.state.user.username}
             onChange={this.inputHandler}
           />
-          <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            required
+            // id="standard-name"
             type="password"
-            id="password"
+            label="password"
             name="password"
+            // className={classes.textfield}
             value={this.state.user.password}
             onChange={this.inputHandler}
           />
-          <button type="submit">Submit</button>
+          <Button type="submit">Sign Up</Button>
         </form>
-        <h2>Already a Member?</h2>
+        <p>Already a Member?</p>
+        <Button component={Link} to="/login">
+          sign in
+        </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
       </div>
     );
