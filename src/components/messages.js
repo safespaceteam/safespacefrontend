@@ -13,7 +13,12 @@ class Messages extends Component {
     };
   }
 
+  setEditMsg = () => {
+    this.setState({ editMsg: this.props.msg.message });
+  };
+
   openEditForm = () => {
+    this.setEditMsg();
     this.setState({ edit: !this.state.edit });
   };
 
@@ -35,11 +40,13 @@ class Messages extends Component {
     axios
       .put(`${url}/messages/${this.props.msg.id}`, findMsg)
       .then(res => {
+        console.log(res);
         this.props.msgHandler(res.data);
       })
       .catch(err => {
         throw new Error();
       });
+    this.openEditForm();
   };
 
   editMsgHandler = event => {
@@ -47,12 +54,13 @@ class Messages extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         {this.state.edit ? (
           <EditMessage
             msg={this.props.msg}
-            editMsg={this.editMsgHandler}
+            editMsgHandler={this.editMsgHandler}
             saveEdits={this.saveEdits}
             openEditForm={this.openEditForm}
             editMsg={this.state.editMsg}

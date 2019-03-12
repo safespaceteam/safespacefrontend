@@ -54,7 +54,8 @@ class Profile extends Component {
   }
 
   msgHandler = data => {
-    this.setState({ msgs: data });
+    this.componentDidMount();
+    // this.setState({ msgs: data });
   };
 
   render() {

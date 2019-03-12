@@ -7,11 +7,11 @@ const EditMessage = props => {
       <TextField
         id="standard-multiline-static"
         name="editMsg"
+        placeholder={props.msg.message}
         type="text"
         multiline
         rows="4"
         value={props.editMsg}
-        // className={classes.textField}
         onChange={props.editMsgHandler}
         margin="normal"
       />
