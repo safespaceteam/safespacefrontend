@@ -1,28 +1,41 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/profileStyling";
+import { Paper } from "@material-ui/core";
 
 const NewMsgForm = props => {
+  const { classes } = props;
   return (
-    <form>
-      <TextField
-        id="standard-multiline-static"
-        name="message"
-        // placeholder={props.msg.message}
-        type="text"
-        multiline
-        rows="4"
-        value={props.message}
-        onChange={props.handleInputChange}
-        margin="normal"
-      />
+    <div className={classes.newMsgcontainer}>
       <i className="material-icons" onClick={props.addMsg}>
         check
       </i>
       <i className="material-icons" onClick={props.newNoteForm}>
         close
       </i>
-    </form>
+      <Paper className={classes.paper}>
+        <form className={classes.addMsgForm}>
+          <TextField
+            id="standard-multiline-static"
+            name="message"
+            placeholder="every little thing is gonna to be alright"
+            type="text"
+            multiline
+            rows="4"
+            value={props.message}
+            onChange={props.handleInputChange}
+            className={classes.newLink}
+            InputProps={{
+              classes: {
+                input: classes.resize
+              }
+            }}
+          />
+        </form>
+      </Paper>
+    </div>
   );
 };
 
-export default NewMsgForm;
+export default withStyles(styles)(NewMsgForm);

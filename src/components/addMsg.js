@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NewMsgForm from "./newMsgForm";
+import { styles } from "./styling/profileStyling";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -37,8 +39,9 @@ class AddMessage extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <NewMsgForm
           message={this.state.message}
           handleInputChange={this.handleInputChange}
@@ -50,4 +53,4 @@ class AddMessage extends Component {
   }
 }
 
-export default AddMessage;
+export default withStyles(styles)(AddMessage);

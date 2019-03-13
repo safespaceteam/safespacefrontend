@@ -4,6 +4,8 @@ import MsgList from "./msgList";
 import AddMessage from "./addMsg";
 import NoMsgs from "./noMsgs";
 import UserInfo from "./UserInfo";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/profileStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -81,7 +83,8 @@ class Profile extends Component {
   };
 
   render() {
-    console.log("fck", this.state);
+    const { classes } = this.props;
+    console.log("main", this.state);
     return (
       <div>
         <UserInfo name={this.state.name} />
@@ -92,9 +95,22 @@ class Profile extends Component {
             msgHandler={this.msgHandler}
           />
         ) : (
-          <i className="material-icons" onClick={this.newNoteForm}>
-            note_add
-          </i>
+          <div
+            className={
+              this.state.msgs.length === 0
+                ? classes.hiddenIcon
+                : classes.showIcon
+            }
+          >
+            <i
+              className="material-icons"
+              onClick={this.newNoteForm}
+              style={{ fontSize: 75, color: "#3A54B4" }}
+            >
+              note_add
+            </i>
+            <p>add message</p>
+          </div>
         )}
 
         {this.state.msgs.length === 0 ? (
@@ -107,4 +123,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withStyles(styles)(Profile);

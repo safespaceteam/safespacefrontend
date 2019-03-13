@@ -1,11 +1,16 @@
 export const styles = theme => ({
   root: {
     padding: theme.spacing.unit * 5,
-    border: "1px solid blue",
+    display: "flex",
+    justifyContent: "center",
+    lineHeight: 1.5
+  },
+
+  paper: {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    lineHeight: 1.5
+    padding: 20
   },
 
   addNoteIcon: {
