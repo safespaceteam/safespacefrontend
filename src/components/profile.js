@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MsgList from "./msgList";
+import AddMessage from "./addMsg";
+import { string } from "postcss-selector-parser";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -9,9 +11,25 @@ class Profile extends Component {
     super(props);
     this.state = {
       msgs: [],
-      loggedIn: false
+      loggedIn: false,
+      addNote: false,
+      name: null
     };
   }
+
+  newNoteForm = () => {
+    this.setState({ addNote: !this.state.addNote });
+  };
+
+  setName = () => {
+    const headerMessage = localStorage.getItem("name");
+    const userName = headerMessage.split(" ");
+    const capName = userName[1].charAt(0).toUpperCase() + userName[1].slice(1);
+    // capName.slice(0, -1);
+    if (!this.state.name) {
+      this.setState({ name: userName[0] + " " + capName });
+    }
+  };
 
   authenticate = () => {
     const token = localStorage.getItem("token");
@@ -38,6 +56,9 @@ class Profile extends Component {
     } else {
       this.props.history.push("/");
     }
+    if (this.state.loggedIn) {
+      this.setName();
+    }
   };
 
   componentDidMount() {
@@ -59,8 +80,21 @@ class Profile extends Component {
   };
 
   render() {
+    console.log("fck", this.state);
     return (
       <div>
+        {this.state.addNote ? (
+          <AddMessage
+            msgs={this.state.msgs}
+            newNoteForm={this.newNoteForm}
+            msgHandler={this.msgHandler}
+          />
+        ) : (
+          <i className="material-icons" onClick={this.newNoteForm}>
+            note_add
+          </i>
+        )}
+
         <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
       </div>
     );
