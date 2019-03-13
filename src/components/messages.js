@@ -4,7 +4,6 @@ import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import { styles } from "./styling/msgStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Grid from "@material-ui/core/Grid";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -62,18 +61,31 @@ class Messages extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        {!this.state.edit ? (
-          <i className="material-icons" onClick={this.openEditForm}>
-            edit
-          </i>
-        ) : null}
-
-        {!this.state.edit ? (
-          <i className="material-icons" onClick={this.deleteMsg}>
-            delete_outline
-          </i>
-        ) : null}
-        <Paper className={classes.paper}>
+        <div className={classes.editDeleteIcon}>
+          <div className={classes.editIcon}>
+            {!this.state.edit ? (
+              <i className="material-icons" onClick={this.openEditForm}>
+                edit
+              </i>
+            ) : (
+              <i className="material-icons" onClick={this.saveEdits}>
+                check
+              </i>
+            )}
+          </div>
+          <div className={classes.deleteIcon}>
+            {!this.state.edit ? (
+              <i className="material-icons" onClick={this.deleteMsg}>
+                delete_outline
+              </i>
+            ) : (
+              <i className="material-icons" onClick={this.openEditForm}>
+                close
+              </i>
+            )}
+          </div>
+        </div>
+        <Paper className={this.state.edit ? classes.paperEdit : classes.paper}>
           {this.state.edit ? (
             <EditMessage
               msg={this.props.msg}
