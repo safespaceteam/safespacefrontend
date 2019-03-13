@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import MsgList from "./msgList";
 import AddMessage from "./addMsg";
-import { string } from "postcss-selector-parser";
+import NoMsgs from "./noMsgs";
+import UserInfo from "./UserInfo";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -31,48 +32,48 @@ class Profile extends Component {
     }
   };
 
-  authenticate = () => {
-    const token = localStorage.getItem("token");
-    const options = {
-      headers: {
-        authorization: token
-      }
-    };
+  // authenticate = () => {
+  //   const token = localStorage.getItem("token");
+  //   const options = {
+  //     headers: {
+  //       authorization: token
+  //     }
+  //   };
 
-    if (token) {
-      axios
-        .get(`${url}/messages`, options)
-        .then(res => {
-          console.log("res", res);
-          if (res.status === 200 && res.data) {
-            this.setState({ loggedIn: true, msgs: res.data });
-          } else {
-            throw new Error();
-          }
-        })
-        .catch(err => {
-          this.props.history.push("/");
-        });
-    } else {
-      this.props.history.push("/");
-    }
-    if (this.state.loggedIn) {
-      this.setName();
-    }
-  };
+  //   if (token) {
+  //     axios
+  //       .get(`${url}/messages`, options)
+  //       .then(res => {
+  //         console.log("res", res);
+  //         if (res.status === 200 && res.data) {
+  //           this.setState({ loggedIn: true, msgs: res.data });
+  //         } else {
+  //           throw new Error();
+  //         }
+  //       })
+  //       .catch(err => {
+  //         this.props.history.push("/");
+  //       });
+  //   } else {
+  //     this.props.history.push("/");
+  //   }
+  //   if (this.state.loggedIn) {
+  //     this.setName();
+  //   }
+  // };
 
-  componentDidMount() {
-    this.authenticate();
-  }
+  // componentDidMount() {
+  //   this.authenticate();
+  // }
 
-  componentDidUpdate(prevProps) {
-    const { pathname } = this.props.location;
-    console.log(this.props);
-    console.log(prevProps);
-    if (pathname === "/profile" && pathname !== prevProps.location.pathname) {
-      this.authenticate();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { pathname } = this.props.location;
+  //   console.log(this.props);
+  //   console.log(prevProps);
+  //   if (pathname === "/profile" && pathname !== prevProps.location.pathname) {
+  //     this.authenticate();
+  //   }
+  // }
 
   msgHandler = data => {
     this.componentDidMount();
@@ -83,6 +84,7 @@ class Profile extends Component {
     console.log("fck", this.state);
     return (
       <div>
+        <UserInfo name={this.state.name} />
         {this.state.addNote ? (
           <AddMessage
             msgs={this.state.msgs}
@@ -95,7 +97,11 @@ class Profile extends Component {
           </i>
         )}
 
-        <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
+        {this.state.msgs.length === 0 ? (
+          <NoMsgs newNoteForm={this.newNoteForm} />
+        ) : (
+          <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
+        )}
       </div>
     );
   }

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import EditMessage from "./editMessage";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
-import { styles } from "./styling/msgStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/msgStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 

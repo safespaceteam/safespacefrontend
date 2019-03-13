@@ -1,8 +1,8 @@
 import React from "react";
 import Messages from "./messages";
-import { styles } from "./styling/profileStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
+import { styles } from "./styling/profileStyling";
 
 const MsgList = props => {
   const { classes } = props;

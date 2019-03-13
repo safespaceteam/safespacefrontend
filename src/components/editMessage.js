@@ -1,8 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { styles } from "./styling/msgStyling";
-
 import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/msgStyling";
 
 const EditMessage = props => {
   const { classes } = props;
