@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
-import { MyPaper, AuthForm } from "./styling/loginSyling";
+import { styles } from "./styling/loginSyling";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -51,52 +52,64 @@ class Register extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        {/* <Paper className="paper"> */}
-        <MyPaper>
-          {/* <Paper className="paper"> */}
-          <AuthForm onSubmit={this.submitHandler}>
-            <Avatar>
-              <i className="material-icons">person_outline</i>
-            </Avatar>
-            <h2>Sign up</h2>
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <i className="material-icons">person_outline</i>
+          </Avatar>
+          <h2>Sign up</h2>
+          <form onSubmit={this.submitHandler} className={classes.signInform}>
             <TextField
               required
-              // id="standard-name"
               type="text"
               label="name"
               name="name"
-              // className={classes.textfield}
+              className={classes.textfield}
               value={this.state.user.name}
               onChange={this.inputHandler}
+              InputProps={{
+                classes: {
+                  input: classes.resize
+                }
+              }}
             />
             <TextField
               required
-              // id="standard-name"
               type="text"
               label="username"
               name="username"
-              // className={classes.textfield}
+              className={classes.textfield}
               value={this.state.user.username}
               onChange={this.inputHandler}
+              InputProps={{
+                classes: {
+                  input: classes.resize
+                }
+              }}
             />
             <TextField
               required
-              // id="standard-name"
               type="password"
               label="password"
               name="password"
-              // className={classes.textfield}
+              className={classes.textfield}
               value={this.state.user.password}
               onChange={this.inputHandler}
+              InputProps={{
+                classes: {
+                  input: classes.resize
+                }
+              }}
             />
-            <Button type="submit">Sign Up</Button>
-          </AuthForm>
-        </MyPaper>
-        {/* </Paper> */}
+            <Button type="submit" className={classes.signinBtn}>
+              Sign Up
+            </Button>
+          </form>
+        </Paper>
         <p>Already a Member?</p>
-        <Button component={Link} to="/login">
+        <Button component={Link} to="/login" className={classes.toggleBtn}>
           sign in
         </Button>
         {this.state.message ? <h4>{this.state.message}</h4> : undefined}
@@ -105,4 +118,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withStyles(styles)(Register);

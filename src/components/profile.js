@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import MsgList from "./msgList";
 import AddMessage from "./addMsg";
+import { string } from "postcss-selector-parser";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -11,12 +12,23 @@ class Profile extends Component {
     this.state = {
       msgs: [],
       loggedIn: false,
-      addNote: false
+      addNote: false,
+      name: null
     };
   }
 
   newNoteForm = () => {
     this.setState({ addNote: !this.state.addNote });
+  };
+
+  setName = () => {
+    const headerMessage = localStorage.getItem("name");
+    const userName = headerMessage.split(" ");
+    const capName = userName[1].charAt(0).toUpperCase() + userName[1].slice(1);
+    // capName.slice(0, -1);
+    if (!this.state.name) {
+      this.setState({ name: userName[0] + " " + capName });
+    }
   };
 
   authenticate = () => {
@@ -44,6 +56,9 @@ class Profile extends Component {
     } else {
       this.props.history.push("/");
     }
+    if (this.state.loggedIn) {
+      this.setName();
+    }
   };
 
   componentDidMount() {
@@ -65,7 +80,7 @@ class Profile extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log("fck", this.state);
     return (
       <div>
         {this.state.addNote ? (

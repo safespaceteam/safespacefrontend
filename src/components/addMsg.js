@@ -23,7 +23,6 @@ class AddMessage extends Component {
     axios
       .post(`${url}/messages`, newMessage)
       .then(res => {
-        console.log(res);
         this.props.msgHandler();
       })
       .catch(err => {
@@ -38,17 +37,14 @@ class AddMessage extends Component {
   };
 
   render() {
-    console.log("state", this.props.msgs[0].userId);
     return (
       <div>
-        {/* <i className="material-icons">note_add</i> */}
         <NewMsgForm
           message={this.state.message}
           handleInputChange={this.handleInputChange}
           addMsg={this.addMsg}
           newNoteForm={this.props.newNoteForm}
         />
-        {/* {this.props.msg.userId} */}
       </div>
     );
   }
