@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
-import { styles } from "./styling/loginSyling";
+import { styles } from "./styling/loginStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const url = process.env.REACT_APP_DB_URL;

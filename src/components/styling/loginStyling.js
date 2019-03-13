@@ -1,22 +1,3 @@
-import { FormHelperText } from "@material-ui/core";
-
-// import styled from "styled-components";
-
-// export const MyPaper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   padding: 50px 20px;
-//   align-items: center;
-//   width: 100%;
-// `;
-
-// export const AuthForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   width: 30%;
-//   border: 1px solid blue;
-// `;
-
 export const styles = theme => ({
   root: {
     width: "100%",
@@ -27,7 +8,8 @@ export const styles = theme => ({
   },
 
   paper: {
-    width: "30%",
+    width: "auto",
+    minWidth: "400px",
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
@@ -47,7 +29,7 @@ export const styles = theme => ({
   },
 
   textfield: {
-    width: "60%",
+    // width: "60%",
     margin: "15px 0",
     fontSize: "16px"
   },

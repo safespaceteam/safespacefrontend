@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Routes from "./components/routes";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
-// import Button from "@material-ui/core/Button";
 
 const theme = createMuiTheme({
   palette: {
@@ -17,9 +16,10 @@ const theme = createMuiTheme({
 
 class App extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <div className="App">
+        <div className="app">
           <Routes />
         </div>
       </MuiThemeProvider>

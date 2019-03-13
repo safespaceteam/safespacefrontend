@@ -5,7 +5,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import { styles } from "./styling/loginSyling";
+import { styles } from "./styling/loginStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const url = process.env.REACT_APP_DB_URL;
