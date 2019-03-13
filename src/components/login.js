@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -51,33 +52,35 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.submitHandler}>
-          <Avatar>
-            <i className="material-icons">person_outline</i>
-          </Avatar>
-          <h2>Sign In</h2>
-          <TextField
-            required
-            // id="standard-name"
-            type="text"
-            label="username"
-            name="username"
-            // className={classes.textfield}
-            value={this.state.user.username}
-            onChange={this.inputHandler}
-          />
-          <TextField
-            required
-            // id="standard-name"
-            type="password"
-            label="password"
-            name="password"
-            // className={classes.textfield}
-            value={this.state.user.password}
-            onChange={this.inputHandler}
-          />
-          <Button type="submit">Sign In</Button>
-        </form>
+        <Paper>
+          <form onSubmit={this.submitHandler}>
+            <Avatar>
+              <i className="material-icons">person_outline</i>
+            </Avatar>
+            <h2>Sign In</h2>
+            <TextField
+              required
+              // id="standard-name"
+              type="text"
+              label="username"
+              name="username"
+              // className={classes.textfield}
+              value={this.state.user.username}
+              onChange={this.inputHandler}
+            />
+            <TextField
+              required
+              // id="standard-name"
+              type="password"
+              label="password"
+              name="password"
+              // className={classes.textfield}
+              value={this.state.user.password}
+              onChange={this.inputHandler}
+            />
+            <Button type="submit">Sign In</Button>
+          </form>
+        </Paper>
         <p>Not a Member?</p>
         <Button component={Link} to="/register">
           Register

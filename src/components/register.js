@@ -4,6 +4,8 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
+import Paper from "@material-ui/core/Paper";
+import { MyPaper, AuthForm } from "./styling/loginSyling";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -51,43 +53,48 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.submitHandler}>
-          <Avatar>
-            <i className="material-icons">person_outline</i>
-          </Avatar>
-          <h2>Sign up</h2>
-          <TextField
-            required
-            // id="standard-name"
-            type="text"
-            label="name"
-            name="name"
-            // className={classes.textfield}
-            value={this.state.user.name}
-            onChange={this.inputHandler}
-          />
-          <TextField
-            required
-            // id="standard-name"
-            type="text"
-            label="username"
-            name="username"
-            // className={classes.textfield}
-            value={this.state.user.username}
-            onChange={this.inputHandler}
-          />
-          <TextField
-            required
-            // id="standard-name"
-            type="password"
-            label="password"
-            name="password"
-            // className={classes.textfield}
-            value={this.state.user.password}
-            onChange={this.inputHandler}
-          />
-          <Button type="submit">Sign Up</Button>
-        </form>
+        {/* <Paper className="paper"> */}
+        <MyPaper>
+          {/* <Paper className="paper"> */}
+          <AuthForm onSubmit={this.submitHandler}>
+            <Avatar>
+              <i className="material-icons">person_outline</i>
+            </Avatar>
+            <h2>Sign up</h2>
+            <TextField
+              required
+              // id="standard-name"
+              type="text"
+              label="name"
+              name="name"
+              // className={classes.textfield}
+              value={this.state.user.name}
+              onChange={this.inputHandler}
+            />
+            <TextField
+              required
+              // id="standard-name"
+              type="text"
+              label="username"
+              name="username"
+              // className={classes.textfield}
+              value={this.state.user.username}
+              onChange={this.inputHandler}
+            />
+            <TextField
+              required
+              // id="standard-name"
+              type="password"
+              label="password"
+              name="password"
+              // className={classes.textfield}
+              value={this.state.user.password}
+              onChange={this.inputHandler}
+            />
+            <Button type="submit">Sign Up</Button>
+          </AuthForm>
+        </MyPaper>
+        {/* </Paper> */}
         <p>Already a Member?</p>
         <Button component={Link} to="/login">
           sign in

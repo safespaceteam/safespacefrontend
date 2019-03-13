@@ -15,26 +15,22 @@ class AddMessage extends Component {
 
   addMsg = event => {
     event.preventDefault();
-    const newMessage = { message: this.state.message };
-    const token = localStorage.getItem("token");
-    const options = {
-      headers: {
-        authorization: token
-      }
+    const newMessage = {
+      message: this.state.message,
+      userId: this.props.msgs[0].userId
     };
-    if (token) {
-      axios
-        .post(`${url}/messages`, newMessage, options)
-        .then(res => {
-          console.log(res);
-          this.props.msgHandler();
-        })
-        .catch(err => {
-          throw new Error();
-        });
-    } else {
-      this.props.history.push("/login");
-    }
+
+    axios
+      .post(`${url}/messages`, newMessage)
+      .then(res => {
+        console.log(res);
+        this.props.msgHandler();
+      })
+      .catch(err => {
+        throw new Error();
+      });
+
+    this.props.newNoteForm();
   };
 
   handleInputChange = event => {
@@ -42,7 +38,7 @@ class AddMessage extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log("state", this.props.msgs[0].userId);
     return (
       <div>
         {/* <i className="material-icons">note_add</i> */}
@@ -52,6 +48,7 @@ class AddMessage extends Component {
           addMsg={this.addMsg}
           newNoteForm={this.props.newNoteForm}
         />
+        {/* {this.props.msg.userId} */}
       </div>
     );
   }

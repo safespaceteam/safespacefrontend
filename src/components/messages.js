@@ -26,7 +26,9 @@ class Messages extends Component {
     event.preventDefault();
     axios
       .delete(`${url}/messages/${this.props.msg.id}`)
-      .then(res => {})
+      .then(res => {
+        this.props.msgHandler();
+      })
       .catch(err => {
         throw new Error();
       });
@@ -40,8 +42,7 @@ class Messages extends Component {
     axios
       .put(`${url}/messages/${this.props.msg.id}`, findMsg)
       .then(res => {
-        console.log(res);
-        this.props.msgHandler(res.data);
+        this.props.msgHandler();
       })
       .catch(err => {
         throw new Error();
