@@ -10,6 +10,7 @@ const UserInfo = props => {
       <Avatar className={classes.avatar}>
         <i className="material-icons">person_outline</i>
       </Avatar>
+      <div>key</div>
       {props.name == null ? <h1>Welcome</h1> : <h1>{props.name}</h1>}
     </div>
   );

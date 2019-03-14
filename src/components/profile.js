@@ -16,7 +16,8 @@ class Profile extends Component {
       msgs: [],
       loggedIn: false,
       addNote: false,
-      name: null
+      name: null,
+      userId: null
     };
   }
 
@@ -54,10 +55,10 @@ class Profile extends Component {
           }
         })
         .catch(err => {
-          this.props.history.push("/");
+          this.props.history.push("/login");
         });
     } else {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     }
     if (this.state.loggedIn) {
       this.setName();

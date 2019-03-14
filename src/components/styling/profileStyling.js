@@ -3,7 +3,8 @@ export const styles = theme => ({
     padding: theme.spacing.unit * 5,
     display: "flex",
     justifyContent: "center",
-    lineHeight: 1.5
+    lineHeight: 1.5,
+    width: "100%"
   },
 
   welcomeContainer: {

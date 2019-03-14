@@ -12,7 +12,8 @@ class Messages extends Component {
     super(props);
     this.state = {
       edit: false,
-      editMsg: ""
+      editMsg: "",
+      msgSent: false
     };
   }
 
@@ -37,6 +38,33 @@ class Messages extends Component {
       });
   };
 
+  sendMsg = event => {
+    event.preventDefault();
+    const user = localStorage.getItem("userId");
+    const findMsgSend = {
+      message: this.props.msg.message,
+      id: this.props.msg.id
+    };
+    console.log("findmsgSne", findMsgSend);
+    if (user) {
+      axios
+        .post(`${url}/send`, findMsgSend)
+        .then(res => {
+          console.log("send", res);
+          if (res.status === 200 && res.data) {
+            this.setState({ sentMsg: true });
+          } else {
+            this.setState({ sentMsg: false });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log("msg not sent");
+    }
+  };
+
   saveEdits = event => {
     event.preventDefault();
     const findMsg = {
@@ -59,6 +87,8 @@ class Messages extends Component {
 
   render() {
     const { classes } = this.props;
+    console.log("props", this.props.msg);
+    console.log("props", this.state);
     return (
       <div className={classes.root}>
         <div className={classes.editDeleteIcon}>
@@ -83,6 +113,11 @@ class Messages extends Component {
                 close
               </i>
             )}
+          </div>
+          <div className={classes.sendIcon}>
+            <i class="material-icons" onClick={this.sendMsg}>
+              send
+            </i>
           </div>
         </div>
         <Paper className={this.state.edit ? classes.paperEdit : classes.paper}>

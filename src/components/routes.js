@@ -3,16 +3,18 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Login from "./login";
 import Register from "./register";
 import Profile from "./profile";
+import Navigation from "./navigation";
 
 const Routes = props => {
   return (
     <div>
-      <nav>
+      <Navigation />
+      {/* <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/blog">Blog</NavLink>
         <NavLink to="contact">Contact</NavLink>
-      </nav>
+      </nav> */}
       <section>
         <Switch>
           <Route path="/register" component={Register} />
