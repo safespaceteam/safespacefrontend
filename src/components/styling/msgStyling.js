@@ -29,23 +29,22 @@ export const styles = theme => ({
   },
 
   textfield: {
-    border: "1px solid blue",
     width: "100%"
   },
 
   editForm: {
-    border: "1px solid blue",
     width: "100%",
-    lineHeight: 1.4,
-    margin: "10 0"
+    lineHeight: 1.4
+    // margin: "10 0"
   },
 
   resize: {
-    fontSize: 20
+    fontSize: 20,
+    lineHeight: 1.5
   },
 
   paperEdit: {
-    padding: "0 0",
+    padding: "10px 10px",
     margin: "0 0"
   }
 });

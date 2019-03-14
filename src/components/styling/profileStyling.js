@@ -3,9 +3,9 @@ export const styles = theme => ({
     padding: theme.spacing.unit * 5,
     display: "flex",
     justifyContent: "center",
-    lineHeight: 1.5,
-    border: "1px solid blue"
+    lineHeight: 1.5
   },
+
   welcomeContainer: {
     display: "flex",
     flexDirection: "row",
@@ -18,7 +18,7 @@ export const styles = theme => ({
   },
 
   hiddenIcon: {
-    // display: "none",
+    display: "none",
     textAlign: "center"
   },
 
@@ -27,41 +27,52 @@ export const styles = theme => ({
   },
 
   newMsgcontainer: {
-    // padding: theme.spacing.unit * 5,
-    // display: "flex",
-    // justifyContent: "center",
-    // lineHeight: 1.5
-    width: "auto%"
+    minWidth: "300px",
+    width: "600px"
   },
 
   paper: {
     width: "100%",
-
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // flexDirection: "column",
     padding: 20
   },
 
   newLink: {
-    border: "1px solid blue",
-    // width: "100%",
+    width: "100%",
     lineHeight: 1.5,
     padding: 10
   },
 
   addMsgForm: {
-    width: "auto",
-    // display: "flex",
-    // flexDirection: "column",
-    // alignItems: "center",
-    // width: "100%",
-    border: "1px solid blue"
+    width: "100%"
   },
 
   resize: {
     fontSize: 20,
     lineHeight: 1.5
+  },
+
+  editDeleteIcon: {
+    border: "1px soild blue",
+    display: "flex",
+    width: "12%",
+    justifyContent: "space-between",
+    "&:hover": {
+      cursor: "pointer"
+    }
+  },
+
+  editIcon: {
+    "&:hover": {
+      color: theme.palette.secondary.main
+    }
+  },
+
+  deleteIcon: {
+    "&:hover": {
+      color: "red"
+    }
   }
 });
