@@ -1,11 +1,9 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./styling/profileStyling";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 const UserInfo = props => {
@@ -26,7 +24,7 @@ const UserInfo = props => {
           <ListItemText primary="send a message to your phone!" />
         </ListItem>
         <ListItem>
-          <i class="material-icons">autorenew</i>
+          <i className="material-icons">autorenew</i>
           <ListItemText primary="Generates a message for you" />
         </ListItem>
       </List>

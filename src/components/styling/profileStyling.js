@@ -9,7 +9,14 @@ export const styles = theme => ({
 
   welcomeContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: theme.spacing.unit,
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column-reverse",
+      alignItems: "center"
+    },
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row"
+    },
     justifyContent: "space-between",
     margin: "30px 10%"
   },

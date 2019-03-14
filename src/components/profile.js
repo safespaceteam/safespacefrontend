@@ -85,7 +85,7 @@ class Profile extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log("main", this.state);
+
     return (
       <div>
         <UserInfo name={this.state.name} />

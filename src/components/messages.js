@@ -49,12 +49,11 @@ class Messages extends Component {
       message: this.props.msg.message,
       id: this.props.msg.id
     };
-    console.log("findmsgSne", findMsgSend);
+
     if (user) {
       axios
         .post(`${url}/send`, findMsgSend)
         .then(res => {
-          console.log("send", res);
           if (res.status === 200 && res.data) {
             // this.setState({ sentMsg: true })
             this.msgSent();
@@ -92,8 +91,6 @@ class Messages extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log("props", this.props.msg);
-    console.log("props", this.state);
     return (
       <div className={classes.root}>
         <div className={classes.editDeleteIcon}>

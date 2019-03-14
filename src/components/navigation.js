@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./styling/navigationStyling";
 import List from "@material-ui/core/List";
-import ListItemText from "@material-ui/core/ListItemText";
 
 class Navigation extends Component {
   constructor(props) {
