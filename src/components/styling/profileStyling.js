@@ -14,10 +14,6 @@ export const styles = theme => ({
     margin: "30px 10%"
   },
 
-  avatar: {
-    fontSize: "100px"
-  },
-
   hiddenIcon: {
     display: "none",
     textAlign: "center"
@@ -83,5 +79,9 @@ export const styles = theme => ({
       color: "green",
       cursor: "pointer"
     }
+  },
+
+  welcome: {
+    color: "#FF8B7B"
   }
 });

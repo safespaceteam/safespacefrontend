@@ -33,7 +33,6 @@ class Navigation extends Component {
           classes={{
             paper: classes.drawerPaper
           }}
-          containerStyle={{ width: "calc(100% - 64px)", top: 64 }}
           open={open}
           className={open ? classes.menu : classes.menuClosed}
           variant="persistent"
@@ -41,7 +40,7 @@ class Navigation extends Component {
         >
           <div className={classes.menuHeader}>
             <IconButton onClick={this.handleMenu}>
-              <i class="material-icons">close</i>
+              <i className="material-icons">close</i>
             </IconButton>
           </div>
           <List className={classes.navLinks}>

@@ -38,6 +38,10 @@ class Messages extends Component {
       });
   };
 
+  msgSent = () => {
+    alert("Your msg has been sent successfully");
+  };
+
   sendMsg = event => {
     event.preventDefault();
     const user = localStorage.getItem("userId");
@@ -52,7 +56,8 @@ class Messages extends Component {
         .then(res => {
           console.log("send", res);
           if (res.status === 200 && res.data) {
-            this.setState({ sentMsg: true });
+            // this.setState({ sentMsg: true })
+            this.msgSent();
           } else {
             this.setState({ sentMsg: false });
           }
@@ -115,7 +120,7 @@ class Messages extends Component {
             )}
           </div>
           <div className={classes.sendIcon}>
-            <i class="material-icons" onClick={this.sendMsg}>
+            <i className="material-icons" onClick={this.sendMsg}>
               send
             </i>
           </div>
