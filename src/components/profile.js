@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import MsgList from "./msgList";
 import AddMessage from "./addMsg";
-import { string } from "postcss-selector-parser";
+import NoMsgs from "./noMsgs";
+import UserInfo from "./UserInfo";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/profileStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -80,9 +83,11 @@ class Profile extends Component {
   };
 
   render() {
-    console.log("fck", this.state);
+    const { classes } = this.props;
+    console.log("main", this.state);
     return (
       <div>
+        <UserInfo name={this.state.name} />
         {this.state.addNote ? (
           <AddMessage
             msgs={this.state.msgs}
@@ -90,15 +95,36 @@ class Profile extends Component {
             msgHandler={this.msgHandler}
           />
         ) : (
-          <i className="material-icons" onClick={this.newNoteForm}>
-            note_add
-          </i>
+          <div
+            className={
+              this.state.msgs.length === 0
+                ? classes.hiddenIcon
+                : classes.showIcon
+            }
+          >
+            <i
+              className="material-icons"
+              onClick={this.newNoteForm}
+              style={{
+                fontSize: 75,
+                color: "#3A54B4",
+                cursor: "pointer"
+              }}
+            >
+              note_add
+            </i>
+            <p>add message</p>
+          </div>
         )}
 
-        <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
+        {this.state.msgs.length === 0 ? (
+          <NoMsgs newNoteForm={this.newNoteForm} />
+        ) : (
+          <MsgList msgs={this.state.msgs} msgHandler={this.msgHandler} />
+        )}
       </div>
     );
   }
 }
 
-export default Profile;
+export default withStyles(styles)(Profile);

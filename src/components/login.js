@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import { styles } from "./styling/loginStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Link } from "react-router-dom";
+import { styles } from "./styling/loginStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 

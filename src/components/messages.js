@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import EditMessage from "./editMessage";
 import axios from "axios";
+import Paper from "@material-ui/core/Paper";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/msgStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -55,33 +58,49 @@ class Messages extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        {this.state.edit ? (
-          <EditMessage
-            msg={this.props.msg}
-            editMsgHandler={this.editMsgHandler}
-            saveEdits={this.saveEdits}
-            openEditForm={this.openEditForm}
-            editMsg={this.state.editMsg}
-          />
-        ) : (
-          this.props.msg.message
-        )}
-        {!this.state.edit ? (
-          <i className="material-icons" onClick={this.openEditForm}>
-            edit
-          </i>
-        ) : null}
-
-        {!this.state.edit ? (
-          <i className="material-icons" onClick={this.deleteMsg}>
-            delete_outline
-          </i>
-        ) : null}
+      <div className={classes.root}>
+        <div className={classes.editDeleteIcon}>
+          <div className={classes.editIcon}>
+            {!this.state.edit ? (
+              <i className="material-icons" onClick={this.openEditForm}>
+                edit
+              </i>
+            ) : (
+              <i className="material-icons" onClick={this.saveEdits}>
+                check
+              </i>
+            )}
+          </div>
+          <div className={classes.deleteIcon}>
+            {!this.state.edit ? (
+              <i className="material-icons" onClick={this.deleteMsg}>
+                delete_outline
+              </i>
+            ) : (
+              <i className="material-icons" onClick={this.openEditForm}>
+                close
+              </i>
+            )}
+          </div>
+        </div>
+        <Paper className={this.state.edit ? classes.paperEdit : classes.paper}>
+          {this.state.edit ? (
+            <EditMessage
+              msg={this.props.msg}
+              editMsgHandler={this.editMsgHandler}
+              saveEdits={this.saveEdits}
+              openEditForm={this.openEditForm}
+              editMsg={this.state.editMsg}
+            />
+          ) : (
+            this.props.msg.message
+          )}
+        </Paper>
       </div>
     );
   }
 }
 
-export default Messages;
+export default withStyles(styles)(Messages);

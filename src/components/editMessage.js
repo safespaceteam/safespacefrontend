@@ -1,9 +1,12 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { styles } from "./styling/msgStyling";
 
 const EditMessage = props => {
+  const { classes } = props;
   return (
-    <form>
+    <form className={classes.editForm}>
       <TextField
         id="standard-multiline-static"
         name="editMsg"
@@ -14,15 +17,15 @@ const EditMessage = props => {
         value={props.editMsg}
         onChange={props.editMsgHandler}
         margin="normal"
+        className={classes.textfield}
+        InputProps={{
+          classes: {
+            input: classes.resize
+          }
+        }}
       />
-      <i className="material-icons" onClick={props.saveEdits}>
-        check
-      </i>
-      <i className="material-icons" onClick={props.openEditForm}>
-        close
-      </i>
     </form>
   );
 };
 
-export default EditMessage;
+export default withStyles(styles)(EditMessage);

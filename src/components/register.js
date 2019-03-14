@@ -38,7 +38,7 @@ class Register extends Component {
         console.log(res);
         if (res.status === 201 && res.data) {
           // localStorage.setItem("token", res.data);
-          this.props.history.push("/");
+          this.props.history.push("/login");
         } else {
           throw new Error();
         }
