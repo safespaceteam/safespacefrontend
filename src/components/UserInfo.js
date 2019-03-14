@@ -26,8 +26,8 @@ const UserInfo = props => {
           <ListItemText primary="send a message to your phone!" />
         </ListItem>
         <ListItem>
-          <i className="material-icons">send</i>
-          <ListItemText primary="send a message to your phone!" />
+          <i class="material-icons">autorenew</i>
+          <ListItemText primary="Generates a message for you" />
         </ListItem>
       </List>
       {props.name == null ? (
