@@ -22,6 +22,11 @@ const NewMsgForm = props => {
       </div>
       <Paper className={classes.paper}>
         <form className={classes.addMsgForm}>
+          <div className={classes.generateQuote}>
+            <i class="material-icons" onClick={props.generateMsg}>
+              autorenew
+            </i>
+          </div>
           <TextField
             id="standard-multiline-static"
             name="message"

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NewMsgForm from "./newMsgForm";
-import { styles } from "./styling/profileStyling";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { starterMsg } from "./starterData";
+import { styles } from "./styling/profileStyling";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -14,6 +15,11 @@ class AddMessage extends Component {
       message: ""
     };
   }
+
+  generateMsg = event => {
+    const randoNum = Math.floor(Math.random() * 23) + 1;
+    this.setState({ message: starterMsg[randoNum] });
+  };
 
   addMsg = event => {
     event.preventDefault();
@@ -47,6 +53,7 @@ class AddMessage extends Component {
           handleInputChange={this.handleInputChange}
           addMsg={this.addMsg}
           newNoteForm={this.props.newNoteForm}
+          generateMsg={this.generateMsg}
         />
       </div>
     );

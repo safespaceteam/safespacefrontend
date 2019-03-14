@@ -74,5 +74,13 @@ export const styles = theme => ({
     "&:hover": {
       color: "red"
     }
+  },
+
+  generateQuote: {
+    textAlign: "end",
+    "&:hover": {
+      color: "green",
+      cursor: "pointer"
+    }
   }
 });
