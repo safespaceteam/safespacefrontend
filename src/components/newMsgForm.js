@@ -23,7 +23,7 @@ const NewMsgForm = props => {
       <Paper className={classes.paper}>
         <form className={classes.addMsgForm}>
           <div className={classes.generateQuote}>
-            <i class="material-icons" onClick={props.generateMsg}>
+            <i className="material-icons" onClick={props.generateMsg}>
               autorenew
             </i>
           </div>

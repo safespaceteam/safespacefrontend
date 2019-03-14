@@ -23,9 +23,12 @@ class AddMessage extends Component {
 
   addMsg = event => {
     event.preventDefault();
+    const user = this.props.msgs[0].userId
+      ? this.props.msgs[0].userId
+      : localStorage.getItem("userId");
     const newMessage = {
       message: this.state.message,
-      userId: this.props.msgs[0].userId
+      userId: user
     };
 
     axios

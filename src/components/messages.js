@@ -12,7 +12,8 @@ class Messages extends Component {
     super(props);
     this.state = {
       edit: false,
-      editMsg: ""
+      editMsg: "",
+      msgSent: false
     };
   }
 
@@ -35,6 +36,37 @@ class Messages extends Component {
       .catch(err => {
         throw new Error();
       });
+  };
+
+  msgSent = () => {
+    alert("Your msg has been sent successfully");
+  };
+
+  sendMsg = event => {
+    event.preventDefault();
+    const user = localStorage.getItem("userId");
+    const findMsgSend = {
+      message: this.props.msg.message,
+      id: this.props.msg.id
+    };
+
+    if (user) {
+      axios
+        .post(`${url}/send`, findMsgSend)
+        .then(res => {
+          if (res.status === 200 && res.data) {
+            // this.setState({ sentMsg: true })
+            this.msgSent();
+          } else {
+            this.setState({ sentMsg: false });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log("msg not sent");
+    }
   };
 
   saveEdits = event => {
@@ -83,6 +115,11 @@ class Messages extends Component {
                 close
               </i>
             )}
+          </div>
+          <div className={classes.sendIcon}>
+            <i className="material-icons" onClick={this.sendMsg}>
+              send
+            </i>
           </div>
         </div>
         <Paper className={this.state.edit ? classes.paperEdit : classes.paper}>

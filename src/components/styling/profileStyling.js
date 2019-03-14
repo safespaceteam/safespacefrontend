@@ -3,18 +3,22 @@ export const styles = theme => ({
     padding: theme.spacing.unit * 5,
     display: "flex",
     justifyContent: "center",
-    lineHeight: 1.5
+    lineHeight: 1.5,
+    width: "100%"
   },
 
   welcomeContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: theme.spacing.unit,
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column-reverse",
+      alignItems: "center"
+    },
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row"
+    },
     justifyContent: "space-between",
     margin: "30px 10%"
-  },
-
-  avatar: {
-    fontSize: "100px"
   },
 
   hiddenIcon: {
@@ -82,5 +86,9 @@ export const styles = theme => ({
       color: "green",
       cursor: "pointer"
     }
+  },
+
+  welcome: {
+    color: "#FF8B7B"
   }
 });

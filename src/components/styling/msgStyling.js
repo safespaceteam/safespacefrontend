@@ -9,7 +9,7 @@ export const styles = theme => ({
   editDeleteIcon: {
     border: "1px soild blue",
     display: "flex",
-    width: "12%",
+    width: "20%",
     justifyContent: "space-between",
     "&:hover": {
       cursor: "pointer"
@@ -19,6 +19,12 @@ export const styles = theme => ({
   editIcon: {
     "&:hover": {
       color: theme.palette.secondary.main
+    }
+  },
+
+  sendIcon: {
+    "&:hover": {
+      color: "#3A54B4"
     }
   },
 
@@ -44,7 +50,7 @@ export const styles = theme => ({
   },
 
   paperEdit: {
-    padding: "10px 10px",
-    margin: "0 0"
+    padding: "10px 10px"
+    // margin: "0 0"
   }
 });

@@ -1,16 +1,42 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./styling/profileStyling";
+import Typography from "@material-ui/core/Typography";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const UserInfo = props => {
   const { classes } = props;
   return (
     <div className={classes.welcomeContainer}>
-      <Avatar className={classes.avatar}>
-        <i className="material-icons">person_outline</i>
-      </Avatar>
-      {props.name == null ? <h1>Welcome</h1> : <h1>{props.name}</h1>}
+      <List className={classes.avatar}>
+        <ListItem>
+          <i className="material-icons">edit</i>
+          <ListItemText primary="Edit a message" />
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">delete_outline</i>
+          <ListItemText primary="Delete a message" />
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">send</i>
+          <ListItemText primary="send a message to your phone!" />
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">autorenew</i>
+          <ListItemText primary="Generates a message for you" />
+        </ListItem>
+      </List>
+      {props.name == null ? (
+        <Typography variant="h1" className={classes.welcome}>
+          Welcome
+        </Typography>
+      ) : (
+        <Typography variant="h1" className={classes.welcome}>
+          {props.name}
+        </Typography>
+      )}
     </div>
   );
 };

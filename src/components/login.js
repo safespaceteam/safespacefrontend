@@ -38,6 +38,7 @@ class Login extends Component {
         if (res.status === 200 && res.data) {
           console.log(res.data);
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.userId);
           localStorage.setItem("name", res.data.message);
           this.props.history.push("/profile");
         } else {
@@ -78,7 +79,6 @@ class Login extends Component {
             />
             <TextField
               required
-              // id="standard-name"
               type="password"
               label="password"
               name="password"
