@@ -14,6 +14,9 @@ class Navigation extends Component {
     };
   }
 
+  logout = () => {
+    localStorage.clear("token");
+  };
   handleMenu = () => {
     this.setState({ open: !this.state.open });
   };
@@ -48,7 +51,7 @@ class Navigation extends Component {
             <a href="google.com" className={classes.navItem}>
               About
             </a>
-            <a href="/login" className={classes.navItem}>
+            <a href="/login" onClick={this.logout} className={classes.navItem}>
               Logout
             </a>
           </List>

@@ -47,8 +47,9 @@ export const styles = theme => ({
   },
 
   navItem: {
-    fontSize: 20,
+    fontSize: 30,
     textDecoration: "none",
-    marginBottom: 30
+    marginBottom: 30,
+    color: "#FF8B7B"
   }
 });
