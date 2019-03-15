@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import NewMsgForm from "./newMsgForm";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { starterMsg } from "./starterData";
-import { styles } from "./styling/profileStyling";
+import React, { Component } from 'react';
+import axios from 'axios';
+import NewMsgForm from './newMsgForm';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { starterMsg } from './starterData';
+import { styles } from './styling/profileStyling';
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -12,7 +12,7 @@ class AddMessage extends Component {
     super(props);
     this.state = {
       newForm: false,
-      message: ""
+      message: ''
     };
   }
 
@@ -24,9 +24,9 @@ class AddMessage extends Component {
 
   addMsg = event => {
     event.preventDefault();
-    const user = this.props.msgs[0].userId
+    const user = this.props.msgs[0]
       ? this.props.msgs[0].userId
-      : localStorage.getItem("userId");
+      : localStorage.getItem('userId');
     const newMessage = {
       message: this.state.message,
       userId: user
