@@ -55,7 +55,6 @@ class Messages extends Component {
         .post(`${url}/send`, findMsgSend)
         .then(res => {
           if (res.status === 200 && res.data) {
-            // this.setState({ sentMsg: true })
             this.msgSent();
           } else {
             this.setState({ sentMsg: false });
