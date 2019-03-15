@@ -29,7 +29,6 @@ class Profile extends Component {
     const headerMessage = localStorage.getItem("name");
     const userName = headerMessage.split(" ");
     const capName = userName[1].charAt(0).toUpperCase() + userName[1].slice(1);
-    // capName.slice(0, -1);
     if (!this.state.name) {
       this.setState({ name: userName[0] + " " + capName });
     }
@@ -47,21 +46,20 @@ class Profile extends Component {
       axios
         .get(`${url}/messages`, options)
         .then(res => {
-          console.log("res", res);
           if (res.status === 200 && res.data) {
             this.setState({ loggedIn: true, msgs: res.data });
           } else {
             throw new Error();
           }
         })
+        .then(res => {
+          this.setName();
+        })
         .catch(err => {
           this.props.history.push("/login");
         });
     } else {
       this.props.history.push("/login");
-    }
-    if (this.state.loggedIn) {
-      this.setName();
     }
   };
 
@@ -71,8 +69,6 @@ class Profile extends Component {
 
   componentDidUpdate(prevProps) {
     const { pathname } = this.props.location;
-    console.log(this.props);
-    console.log(prevProps);
     if (pathname === "/profile" && pathname !== prevProps.location.pathname) {
       this.authenticate();
     }
@@ -80,7 +76,6 @@ class Profile extends Component {
 
   msgHandler = data => {
     this.componentDidMount();
-    // this.setState({ msgs: data });
   };
 
   render() {

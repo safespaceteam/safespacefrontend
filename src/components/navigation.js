@@ -22,7 +22,6 @@ class Navigation extends Component {
   };
 
   render() {
-    console.log("nav", this.state);
     const { classes } = this.props;
     const { open } = this.state;
     return (

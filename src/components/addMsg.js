@@ -16,6 +16,7 @@ class AddMessage extends Component {
     };
   }
 
+  //generates messages
   generateMsg = event => {
     const randoNum = Math.floor(Math.random() * 23) + 1;
     this.setState({ message: starterMsg[randoNum] });

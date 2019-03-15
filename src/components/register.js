@@ -35,9 +35,7 @@ class Register extends Component {
     axios
       .post(`${url}/register`, this.state.user)
       .then(res => {
-        console.log(res);
         if (res.status === 201 && res.data) {
-          // localStorage.setItem("token", res.data);
           this.props.history.push("/login");
         } else {
           throw new Error();

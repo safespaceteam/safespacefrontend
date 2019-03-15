@@ -36,7 +36,6 @@ class Login extends Component {
       .post(`${url}/login`, this.state.user)
       .then(res => {
         if (res.status === 200 && res.data) {
-          console.log(res.data);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userId", res.data.userId);
           localStorage.setItem("name", res.data.message);
