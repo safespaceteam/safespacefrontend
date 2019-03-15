@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EditMessage from "./editMessage";
 import axios from "axios";
+import SentModal from "./msgSentModal";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { styles } from "./styling/msgStyling";
@@ -13,7 +14,8 @@ class Messages extends Component {
     this.state = {
       edit: false,
       editMsg: "",
-      msgSent: false
+      msgSent: false,
+      open: false
     };
   }
 
@@ -26,6 +28,14 @@ class Messages extends Component {
     this.setState({ edit: !this.state.edit });
   };
 
+  openModal = () => {
+    this.setState({ open: !this.state.open });
+  };
+
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+
   deleteMsg = event => {
     event.preventDefault();
     axios
@@ -36,10 +46,6 @@ class Messages extends Component {
       .catch(err => {
         throw new Error();
       });
-  };
-
-  msgSent = () => {
-    alert("Your msg has been sent successfully");
   };
 
   sendMsg = event => {
@@ -55,7 +61,7 @@ class Messages extends Component {
         .post(`${url}/send`, findMsgSend)
         .then(res => {
           if (res.status === 200 && res.data) {
-            this.msgSent();
+            this.openModal();
           } else {
             this.setState({ sentMsg: false });
           }
@@ -92,6 +98,7 @@ class Messages extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
+        <SentModal open={this.state.open} close={this.closeModal} />
         <div className={classes.editDeleteIcon}>
           <div className={classes.editIcon}>
             {!this.state.edit ? (
