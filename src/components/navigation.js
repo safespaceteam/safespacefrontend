@@ -44,10 +44,16 @@ class Navigation extends Component {
             </IconButton>
           </div>
           <List className={classes.navLinks}>
-            <a href="https://google.com" className={classes.navItem}>
+            <a
+              href="https://safespaceteam.github.io/safespaceuim/#"
+              className={classes.navItem}
+            >
               Home
             </a>
-            <a href="google.com" className={classes.navItem}>
+            <a
+              href="https://safespaceteam.github.io/safespaceuim/about.html"
+              className={classes.navItem}
+            >
               About
             </a>
             <a href="/login" onClick={this.logout} className={classes.navItem}>
