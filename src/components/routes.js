@@ -11,7 +11,7 @@ const Routes = props => {
       <Navigation />
       <section>
         <Switch>
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
