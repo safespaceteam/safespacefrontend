@@ -5,15 +5,16 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
+    typography: {
+      useNextVariants: true
+    },
+
     secondary: {
       main: "#3A54B4"
     },
     primary: {
       main: "#fef7ed"
-    },
-    typography: {
-      useNextVariants: true,
-    },
+    }
   }
 });
 

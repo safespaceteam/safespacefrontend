@@ -38,7 +38,8 @@ class Register extends Component {
         if (res.status === 201 && res.data) {
           this.props.history.push("/login");
         } else {
-          throw new Error();
+          // throw new Error()
+          this.props.history.push("/login");
         }
       })
       .catch(err => {

@@ -9,13 +9,8 @@ const MsgList = props => {
   return (
     <Grid container spacing={24} className={classes.root}>
       {props.msgs.map(msg => (
-        <Grid item lg={4} xs={12} md={6}>
-          <Messages
-            key={msg.id}
-            msg={msg}
-            id={msg.id}
-            msgHandler={props.msgHandler}
-          />
+        <Grid item lg={4} xs={12} md={6} key={msg.id}>
+          <Messages msg={msg} id={msg.id} msgHandler={props.msgHandler} />
         </Grid>
       ))}
     </Grid>
